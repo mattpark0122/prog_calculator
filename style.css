@@ -287,7 +287,7 @@ body {
 }
 .prog-keypad {
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(8, 1fr) 44px;
+  grid-template-rows: 0.7fr 0.7fr repeat(6, 1fr) 44px;
 }
 
 .key {
