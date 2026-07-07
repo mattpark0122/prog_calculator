@@ -11,90 +11,96 @@
 <div id="ad-top" class="ad-banner"></div>
 
 <div class="app-container">
-  <header class="app-header">
-    <span class="app-title">Calc<em>Pro</em></span>
-    <span class="app-sub">Programmer Calculator</span>
-  </header>
 
-  <!-- Real-time base conversion panel -->
-  <div class="base-panel" id="base-panel">
-    <div class="base-row" data-base="2" title="BIN 모드로 전환">
-      <span class="base-label">BIN</span>
-      <span class="base-value" id="val-bin">0</span>
-      <button class="copy-btn" data-copy="val-bin" title="복사">⧉</button>
-    </div>
-    <div class="base-row" data-base="8" title="OCT 모드로 전환">
-      <span class="base-label">OCT</span>
-      <span class="base-value" id="val-oct">0</span>
-      <button class="copy-btn" data-copy="val-oct" title="복사">⧉</button>
-    </div>
-    <div class="base-row" data-base="10" title="DEC 모드로 전환">
-      <span class="base-label">DEC</span>
-      <span class="base-value" id="val-dec">0</span>
-      <button class="copy-btn" data-copy="val-dec" title="복사">⧉</button>
-    </div>
-    <div class="base-row" data-base="16" title="HEX 모드로 전환">
-      <span class="base-label">HEX</span>
-      <span class="base-value" id="val-hex">0</span>
-      <button class="copy-btn" data-copy="val-hex" title="복사">⧉</button>
-    </div>
-  </div>
+  <!-- 스크롤 영역: 헤더 ~ Q Format -->
+  <div class="scroll-area">
 
-  <!-- Controls: bit width + sign -->
-  <div class="prog-controls">
-    <div class="ctrl-row">
-      <span class="ctrl-label">Width</span>
-      <div class="seg-ctrl" id="bit-width-ctrl">
-        <button class="seg-btn" data-width="8">8</button>
-        <button class="seg-btn" data-width="16">16</button>
-        <button class="seg-btn active" data-width="32">32</button>
-        <button class="seg-btn" data-width="64">64</button>
+    <header class="app-header">
+      <span class="app-title">Calc<em>Pro</em></span>
+      <span class="app-sub">Programmer Calculator</span>
+    </header>
+
+    <!-- Real-time base conversion panel -->
+    <div class="base-panel" id="base-panel">
+      <div class="base-row" data-base="2" title="BIN 모드로 전환">
+        <span class="base-label">BIN</span>
+        <span class="base-value" id="val-bin">0</span>
+        <button class="copy-btn" data-copy="val-bin" title="복사">⧉</button>
       </div>
-      <span class="ctrl-label ctrl-label-right">Sign</span>
-      <div class="seg-ctrl" id="sign-ctrl">
-        <button class="seg-btn active" data-sign="signed">Signed</button>
-        <button class="seg-btn" data-sign="unsigned">Unsigned</button>
+      <div class="base-row" data-base="8" title="OCT 모드로 전환">
+        <span class="base-label">OCT</span>
+        <span class="base-value" id="val-oct">0</span>
+        <button class="copy-btn" data-copy="val-oct" title="복사">⧉</button>
+      </div>
+      <div class="base-row" data-base="10" title="DEC 모드로 전환">
+        <span class="base-label">DEC</span>
+        <span class="base-value" id="val-dec">0</span>
+        <button class="copy-btn" data-copy="val-dec" title="복사">⧉</button>
+      </div>
+      <div class="base-row" data-base="16" title="HEX 모드로 전환">
+        <span class="base-label">HEX</span>
+        <span class="base-value" id="val-hex">0</span>
+        <button class="copy-btn" data-copy="val-hex" title="복사">⧉</button>
       </div>
     </div>
-  </div>
 
-  <!-- Display -->
-  <div class="display-area">
-    <div class="calc-history" id="calc-history"></div>
-    <div class="display-expr" id="prog-expr"></div>
-    <div class="display-row">
-      <span class="base-badge" id="base-badge">DEC</span>
-      <div class="display-main prog-display" id="prog-display">0</div>
-    </div>
-  </div>
-
-  <!-- Fixed-Point / Q Format -->
-  <details class="fp-panel">
-    <summary class="fp-summary">Fixed-Point / Q Format</summary>
-    <div class="fp-body">
-      <div class="fp-format-row">
-        <span class="fp-label">Q</span>
-        <input type="number" id="q-int"  value="8" min="1" max="62" class="fp-num-input" title="정수부 비트">
-        <span class="fp-dot">.</span>
-        <input type="number" id="q-frac" value="8" min="0" max="62" class="fp-num-input" title="소수부 비트">
-        <span class="fp-scale-hint" id="fp-scale-hint">scale: 1/256</span>
-      </div>
-      <div class="fp-io-row">
-        <div class="fp-io-field">
-          <label for="fp-raw">Raw Integer</label>
-          <input type="text" id="fp-raw"  class="fp-val-input" placeholder="128 or 0x80" value="0">
+    <!-- Controls: bit width + sign -->
+    <div class="prog-controls">
+      <div class="ctrl-row">
+        <span class="ctrl-label">Width</span>
+        <div class="seg-ctrl" id="bit-width-ctrl">
+          <button class="seg-btn" data-width="8">8</button>
+          <button class="seg-btn" data-width="16">16</button>
+          <button class="seg-btn active" data-width="32">32</button>
+          <button class="seg-btn" data-width="64">64</button>
         </div>
-        <span class="fp-sync">⇄</span>
-        <div class="fp-io-field">
-          <label for="fp-real">Real Value</label>
-          <input type="text" id="fp-real" class="fp-val-input" placeholder="0.5" value="0">
+        <span class="ctrl-label ctrl-label-right">Sign</span>
+        <div class="seg-ctrl" id="sign-ctrl">
+          <button class="seg-btn active" data-sign="signed">Signed</button>
+          <button class="seg-btn" data-sign="unsigned">Unsigned</button>
         </div>
       </div>
-      <div class="fp-result" id="fp-result"></div>
     </div>
-  </details>
 
-  <!-- Programmer Keypad -->
+    <!-- Display -->
+    <div class="display-area">
+      <div class="calc-history" id="calc-history"></div>
+      <div class="display-expr" id="prog-expr"></div>
+      <div class="display-row">
+        <span class="base-badge" id="base-badge">DEC</span>
+        <div class="display-main prog-display" id="prog-display">0</div>
+      </div>
+    </div>
+
+    <!-- Fixed-Point / Q Format -->
+    <details class="fp-panel">
+      <summary class="fp-summary">Fixed-Point / Q Format</summary>
+      <div class="fp-body">
+        <div class="fp-format-row">
+          <span class="fp-label">Q</span>
+          <input type="number" id="q-int"  value="8" min="1" max="62" class="fp-num-input" title="정수부 비트">
+          <span class="fp-dot">.</span>
+          <input type="number" id="q-frac" value="8" min="0" max="62" class="fp-num-input" title="소수부 비트">
+          <span class="fp-scale-hint" id="fp-scale-hint">scale: 1/256</span>
+        </div>
+        <div class="fp-io-row">
+          <div class="fp-io-field">
+            <label for="fp-raw">Raw Integer</label>
+            <input type="text" id="fp-raw"  class="fp-val-input" placeholder="128 or 0x80" value="0">
+          </div>
+          <span class="fp-sync">⇄</span>
+          <div class="fp-io-field">
+            <label for="fp-real">Real Value</label>
+            <input type="text" id="fp-real" class="fp-val-input" placeholder="0.5" value="0">
+          </div>
+        </div>
+        <div class="fp-result" id="fp-result"></div>
+      </div>
+    </details>
+
+  </div><!-- /.scroll-area -->
+
+  <!-- Programmer Keypad (항상 하단 고정) -->
   <div class="keypad prog-keypad">
     <!-- Bitwise operations -->
     <button class="key bit-key" data-action="and">AND</button>
@@ -143,6 +149,7 @@
     <!-- Full-width equals -->
     <button class="key eq-key full-eq" data-action="equals">=</button>
   </div>
+
 </div>
 
 <div id="ad-bottom" class="ad-banner"></div>
