@@ -18,6 +18,7 @@ const state = {
   bitWidth:     32,   // 8 | 16 | 32 | 64
   signed:       true,
   expr:         '',
+  history:      [],   // recent calculation results
 };
 
 const BITWISE_OPS = new Set(['AND','OR','XOR','NAND','NOR','SHL','SHR']);
@@ -195,6 +196,12 @@ function render() {
   setPanel('val-dec', decInt, fDec);
   setPanel('val-hex', hexInt, fHex);
 
+  /* ---------- History ---------- */
+  const histEl = document.getElementById('calc-history');
+  histEl.innerHTML = s.history
+    .map(h => `<div class="calc-history-line">${escHtml(h)}</div>`)
+    .join('');
+
   /* ---------- Main display ---------- */
   const disp = document.getElementById('prog-display');
   disp.textContent = s.inputBuf;
@@ -341,6 +348,8 @@ function pEquals() {
   const s = state;
   if (s.operator === null) return;
 
+  const histExpr = s.expr + ' ' + s.inputBuf;
+
   if (BITWISE_OPS.has(s.operator)) {
     s.currentVal = maskVal(bitwiseCompute(s.prevVal, s.currentVal, s.operator), s.bitWidth);
     s.fracVal = 0; s.hasFrac = false; s.fracBuf = '';
@@ -348,6 +357,9 @@ function pEquals() {
   } else {
     setFromNum(arithCompute(getPrevNumVal(), getNumVal(), s.operator));
   }
+
+  s.history.unshift(histExpr + ' = ' + s.inputBuf);
+  if (s.history.length > 5) s.history.pop();
 
   s.expr = '';
   s.operator = null;

@@ -104,6 +104,21 @@ body {
   text-align: right;
   flex-shrink: 0;
 }
+.calc-history {
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: right;
+  line-height: 1.6;
+  opacity: 0.55;
+  overflow: hidden;
+  max-height: 54px;
+}
+.calc-history-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .display-expr {
   font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
   font-size: 13px;
