@@ -109,7 +109,7 @@ body {
 .display-area {
   background: var(--display-bg);
   border-radius: var(--radius);
-  padding: 7px 14px 9px;
+  padding: 10px 16px 13px;
   margin-bottom: 4px;
   min-height: 0;
   text-align: right;
@@ -154,7 +154,7 @@ body {
 }
 .display-main {
   font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 200;
   line-height: 1.2;
   overflow: hidden;
@@ -178,7 +178,7 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  padding: 7px 14px;
+  padding: 9px 14px;
   cursor: pointer;
   transition: background 0.15s;
   border-left: 3px solid transparent;
@@ -191,17 +191,17 @@ body {
 .base-row + .base-row { border-top: 1px solid rgba(255,255,255,0.05); }
 
 .base-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-dim);
   letter-spacing: 1.2px;
-  min-width: 30px;
+  min-width: 32px;
   padding-top: 2px;
 }
 .base-value {
   flex: 1;
   font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -211,7 +211,7 @@ body {
 }
 /* BIN row: allow wrapping (binary is long) */
 .base-row[data-base="2"] .base-value {
-  font-size: 11px;
+  font-size: 12px;
   white-space: normal;
 }
 /* When fractional, also allow wrapping for other rows */
@@ -282,21 +282,21 @@ body {
   display: grid;
   gap: var(--gap);
   flex-shrink: 0;
-  min-height: 360px;
+  min-height: 285px;
   padding: 0 10px 6px;
 }
 .prog-keypad {
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 0.7fr 0.7fr repeat(6, 1fr) 44px;
+  grid-template-rows: 0.6fr 0.6fr repeat(6, 0.85fr) 38px;
 }
 
 .key {
   border: none;
   border-radius: var(--key-r);
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
-  min-height: 40px;
+  min-height: 32px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -312,15 +312,15 @@ body {
 .fn-key  { background: var(--key-fn);  color: var(--text); }
 .op-key  { background: var(--key-op);  color: #000; font-weight: 700; }
 .eq-key  { background: var(--key-eq);  color: #000; font-weight: 700; }
-.bit-key { background: var(--key-bit); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.3px; }
+.bit-key { background: var(--key-bit); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.3px; }
 .hex-key { background: var(--key-hex); color: #fff; font-weight: 700; }
 
 /* Full-width equals button */
 .full-eq {
   grid-column: 1 / -1;
-  height: 44px;
-  min-height: 44px;
-  font-size: 20px;
+  height: 38px;
+  min-height: 38px;
+  font-size: 18px;
 }
 
 /* Disabled state (invalid digits for current base, or bitwise when fractional) */
@@ -447,15 +447,16 @@ details[open] .fp-summary::before { transform: rotate(90deg); }
    Responsive
    ============================================= */
 @media (max-width: 400px) {
-  .keypad  { min-height: 320px; }
-  .key     { min-height: 36px; font-size: 16px; }
-  .bit-key { font-size: 10px; }
-  .display-main { font-size: 28px; }
+  .keypad  { min-height: 255px; }
+  .key     { min-height: 28px; font-size: 13px; }
+  .bit-key { font-size: 9px; }
+  .display-main { font-size: 38px; }
+  .base-value { font-size: 13px; }
   .seg-btn { padding: 5px 6px; font-size: 11px; }
-  .full-eq { height: 40px; min-height: 40px; }
+  .full-eq { height: 34px; min-height: 34px; }
 }
 @media (min-width: 520px) {
   .app-container { max-width: 500px; }
-  .key { min-height: 54px; }
-  .full-eq { height: 50px; min-height: 50px; }
+  .key { min-height: 42px; }
+  .full-eq { height: 42px; min-height: 42px; }
 }
